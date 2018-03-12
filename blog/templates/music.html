@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}音乐排行榜-
+{%ifequal cata  'hot'%}热歌榜{%endifequal%}
+{%ifequal cata  'new'%}新歌榜{%endifequal%}
+{%ifequal cata  'internet'%}网络歌曲{%endifequal%}
+{%ifequal cata  'classic'%}经典歌榜{%endifequal%}
+{% endblock %}
+{%block body%}<body>{%endblock%}
+
+{%block nav%}
+<li {%ifequal cata  'hot'%}class="active" {%endifequal%} ><a href="{%url 'music' cata='hot'%}"><span class="glyphicon glyphicon-fire"></span>热歌榜</a></li>
+<li  {%ifequal cata  'new'%}class="active" {%endifequal%}><a href="{%url 'music' cata='new'%}"><span class="glyphicon glyphicon-cd"></span>新歌榜</a></li>
+<li  {%ifequal cata  'classic'%}class="active" {%endifequal%}><a href="{%url 'music' cata='classic'%}"><span class="glyphicon glyphicon-fire"></span>经典老歌</a></li>
+<li  {%ifequal cata  'internet'%}class="active" {%endifequal%}><a href="{%url 'music' cata='internet'%}"><span class="glyphicon glyphicon-question-sign"></span>网络歌曲</a></li>
+{%endblock%}
+
+{% block content %}
+<div class="row" style="margin-top:10px;" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+{% for i in mlist %}
+    <div class="col-md-6 col-xs-12 col-sm-6 col-lg-6" style="padding-right:10px;" ><span style="float:right;">{{i.artist}}</span>{{i.num}}&nbsp;<a href="{{i.url}}" target="_blank">{{ i.title }}</a></div>
+{% endfor %}
+
+</div>
+<div class="col-md-2 col-xs-0 col-sm-6 col-lg-2"> </div>
+</div>
+{% endblock %}

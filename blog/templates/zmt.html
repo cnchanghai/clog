@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title%}字媒体{%endblock%}
+{% block nav_zmt%}class="active"{% endblock %}
+{% block content %}
+<div class="row">
+{% for i in zlist %}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="height:300px;">
+<a target="_blank" href="http://pinyin.sogou.com{{i.url}}"><h5>{{i.title}}</h5>
+<img src="{{i.picurl}}" style="width:283px; height:163px;" />
+<br>
+{{i.des}}
+<br>
+{{i.author}}&nbsp;&nbsp;{{i.date}}&nbsp;{{i.tag}}
+</a>
+</div>
+{% endfor %}
+</div>
+<div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'zmt' ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'zmt' npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> 
+</button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+
+{% endblock %}

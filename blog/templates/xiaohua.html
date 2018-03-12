@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+ 
+{% block title %}笑话{% endblock %}
+{%block nav_xiaohua%} class="active"{%endblock%}
+{% block content %}
+
+{% for i in XiaohuaList %}
+<div class="row" style="margin-top:10px;" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+    <div class="row">{{ i.name }}</div><div class="row">{{ i.content }}</div>
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+</div>
+{% endfor %}
+
+
+
+<div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'xiaohua' ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'xiaohua' npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> </button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+{% endblock %}

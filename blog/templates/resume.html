@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>李长海的个人主页-{% block title %}个人简历{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="/static/css/style.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet" />
+<script language="javascript">
+function hidejingli()
+{
+    $("#ryx").hide();
+    $("#tckj").hide();
+    $("#wgkj").hide();
+}
+</script>
+</head>
+<body  onLoad="hidejingli()">
+<nav class="navbar navbar-default navbar-fixed-top">
+<div class="container">        
+<div class="navbar-header">
+            <a href="#" class="navbar-brand" style="padding:0;"></a>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+                <span class="icon-bar"> </span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right" style="margin-top:0 " >
+                <li {%block nav_index%} {%endblock%}><a href="/"><span class="glyphicon glyphicon-home"></span>首页</a></li>{%block nav%}
+                <li ><a href="{%url 'live' cata='hot'%}"><span class="glyphicon glyphicon-tower"></span>直播聚合</a></li>
+                <li {%block nav_zmt%} {%endblock%}><a href="{%url 'zmt' 1 %}"><span class="glyphicon glyphicon-book"></span>字媒体</a></li>
+                <li {%block nav_xiaohua%} {%endblock%}><a href="{%url 'xiaohua' 1 %}"><span class="glyphicon glyphicon-asterisk"></span>笑哈哈</a></li>
+                <li ><a href="{%url 'piyao' 'all' 1 %}"><span class="glyphicon glyphicon-asterisk"></span>辟谣</a></li>
+                <li {%block nav_moko%} {%endblock%}><a href="{%url 'moko' '1'%}"><span class="glyphicon glyphicon-heart"></span>看模特</a></li>
+                <li {%block nav_lishi%} {%endblock%}><a href="{%url 'nolishi' %}"><span class="glyphicon glyphicon-globe"></span>历史上的今天</a></li>
+                <li><a href="{%url 'movie_nowplay'%}"><span class="glyphicon glyphicon-hd-video"></span>影剧指南</a></li>
+                <li><a target=_blank href="http://music.163.com/#/discover/toplist?id=60198"><span class="glyphicon glyphicon-headphones"></span>音乐推荐</a></li>
+               {%endblock%}
+            </ul>
+        </div>
+</div></nav>
+<br/>
+<br/>
+<br/>
+<br/>
+
+ <div class="container">
+{% block content %}
+     <div class="row"><h1>个人简历</h1></div>
+<div class="row">
+<div class="col-md-2 col-xs-0 col-sm-2 col-lg-2"> </div>
+<div class="col-md-8 col-xs-12 col-sm-8 col-lg-8">
+   <div class="row">
+         <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8"> <h2>个人信息</h2></div>
+   </div>
+   <div class="row"> 
+        <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">姓&nbsp;&nbsp;&nbsp;&nbsp;名</div>
+        <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">李长海</div>
+        <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">电子邮箱</div>
+        <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2"><a href="mailto:i@lichanghai.cn">i@lichanghai.cn</a></div>
+  </div> <div class="row">     <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">现居地址</div>
+        <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2"><a href="http://j.map.baidu.com/3BADL">苏州市姑苏区</a></div>
+         <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">手机号码</div>
+         <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">13074650493</div></div>
+   <div class="row"> <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8"> <h2>求职意向</h2></div></div>
+    <div class="row"> <div class="col-md-2 col-xs-3 col-sm-2 col-lg-2">求职岗位</div>
+    <div class="col-md-6 col-xs-9 col-sm-6 col-lg-6">网络工程师 网络管理员/系统管理员</div></div>
+
+    <div class="row"> <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8"> <h2>工作经历</h2></div></div>
+    <div class="row" id="jingli1"><div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4">2016年4月 至 2017年9月 </div> 
+        <div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4" >苏州日月新半导体有限公司 </div>
+    </div>
+    <div class="row" id="ryx"><div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"> </div> 
+    <div class="col-md-7 col-xs-11 col-sm-7 col-lg-7"> 
+     工作描述：<br><ol><li>物理服务器各虚拟服务器维护</li>
+<li>无线网络设定、交换机配置</li>
+<li>电话交换机维护</li>
+<li>AD、及Notes系统管理</li>
+<li>计算机硬件发放、Smartit系统管理</li>
+<li>处理技术员无法处理的IT叫修</li>
+<li>打印机系统管理</li></ol>
+</div>
+</div>
+
+
+
+
+
+<div class="row" id="jingli2"><div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4">2014年3月 至 2016年4月 </div>
+        <div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4" >江苏天创科技有限公司 </div>
+    </div>
+    <div class="row" id="tckj"><div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"> </div>
+    <div class="col-md-7 col-xs-11 col-sm-7 col-lg-7">
+     工作描述：<br><ol>
+<li>客户单位内部计算机、打印机的采购、安装、维护</li>
+<li>客户单位内与各监测站、下属企业网络设备的管理与维护</li>
+<li>客户单位内服务器的维护</li>
+<li>客户单位内各企业监控检查</li>
+</ol>
+</div>
+</div>
+
+
+<div class="row" id="jingli3"><div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4">2010年3月 至 2014年3月 </div>
+        <div  class="col-md-4 col-xs-6 col-sm-4 col-lg-4" >威刚科技(苏州)有限公司 </div>
+    </div>
+    <div class="row" id="wgkj"><div class="col-md-1 col-xs-1 col-sm-1 col-lg-1"> </div>
+    <div class="col-md-7 col-xs-11 col-sm-7 col-lg-7">
+     工作描述：<br><ol>
+<li>负责公司内部员工的PC机、打印机、终端机设定与维护</li>
+<li>负责公司内门禁、监控系统的简单维护及与厂商沟通</li>
+<li>负责公司内部网络规划及网络交换机、路由器的配置</li>
+<li>负责公司内各服务器的维护(包括Windows与Linux)</li>
+<li>公司内部零星布线</li>
+</ol>
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+<div class="col-md-2 col-xs-0 col-sm-2 col-lg-2"> </div>
+</div>
+{% endblock %}
+{% include 'bottom.html' %}
+</div>
+    <script type="text/javascript" >
+        $("#jingli1").bind("click", function(event) { $("#ryx").show(); $("#wgkj").hide(); $("#tckj").hide(); });
+        $("#jingli2").bind("click", function(event) { $("#tckj").show(); $("#wgkj").hide(); $("#ryx").hide(); });
+        $("#jingli3").bind("click", function(event) { $("#wgkj").show(); $("#ryx").hide(); $("#tckj").hide(); });
+    </script>
+</body>
+</html>

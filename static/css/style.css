@@ -1,0 +1,21 @@
+img{border:none}
+.photo {
+margin:0;
+border:0;
+padding-top:10px;
+}
+//.photo a{position:absolute;display:block;border:1px solid #999;padding:2px}
+.photo a:hover{border:1px solid #fff;text-decoration:none}
+.photo a span {display:none;cursor:hand;text-align:center;}
+.photo a:hover span{width:180px;margin:0 2px;background:#000;display:block;position:absolute;bottom:0;left:0;color:#fff;filter:alpha(opacity=60);-moz-opacity:0.6;opacity:0.6;}
+.moviediv{
+height:300px;
+margin-top:50px;
+}
+.game_div{
+height:250px;
+}
+.index_div{
+margin-top:20px;
+text-align:center;
+}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}辟谣-
+{% ifequal cata 'all' %}全部信息{%endifequal%}
+{% ifequal cata 'pyxw' %}辟谣新闻{%endifequal%}
+{% ifequal cata 'rdgz' %}热点关注{%endifequal%}
+{% ifequal cata 'zjsj' %}专家视角{%endifequal%}
+{% ifequal cata 'gzdt' %}辟谣动态{%endifequal%}
+{% endblock %}</title>
+{%block nav%}
+				<li {% ifequal cata 'all' %}class="active" {%endifequal%}><a href="{%url 'piyao' cata='all' page=1%}"><span class="glyphicon glyphicon-fire"></span>全部信息</a></li>
+                                <li  {% ifequal cata 'pyxw' %}class="active" {%endifequal%} ><a href="{%url 'piyao' cata='pyxw' page=1%}"><span class="glyphicon glyphicon-cd"></span>辟谣新闻</a></li>
+                                <li  {% ifequal cata 'rdgz' %}class="active" {%endifequal%} ><a href="{%url 'piyao' cata='rdgz' page=1%}"><span class="glyphicon glyphicon-cd"></span>热点关注</a></li>
+                                <li  {% ifequal cata 'zjsj' %}class="active" {%endifequal%} ><a href="{%url 'piyao' cata='zjsj' page=1%}"><span class="glyphicon glyphicon-cd"></span>专家视角</a></li>
+                                <li  {% ifequal cata 'gzdt' %}class="active" {%endifequal%} ><a href="{%url 'piyao' cata='gzdt' page=1%}"><span class="glyphicon glyphicon-cd"></span>辟谣动态</a></li>
+
+{%endblock%}
+
+{% block content %}
+
+
+<div class="row" style="margin-top:10px;" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+{% for i in mtlist %}
+    <div class="row" style="margin-top:4px;"><span style="float:right;">{{i.date}}</span><a href="{{i.url}}" target="_blank">{{ i.title }}</a></div>
+{% endfor %}
+
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+</div>
+    <div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'piyao' cata=cata page=ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'piyao' cata=cata page=npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> </button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+
+{% endblock %}
+{% include 'bottom.html' %}
+</div>
+</body>
+</html>

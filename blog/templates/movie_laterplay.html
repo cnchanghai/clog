@@ -1,0 +1,25 @@
+{% extends 'movie_base.html'%}
+{%block title%}即将上线{%endblock%}
+{%block movie_laterplay%}class="active"{%endblock%}
+{%block content%}
+<div class="row">
+{% for i in result %}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 moviediv ">
+<a target=_blank href="{{i.movie_link}}" title="{{i.movie_name}}"  >
+  <h5>{{i.movie_name}}</h5>
+  <span class="imgbox">
+  <img src="{{i.movie_pic}}" width="133" height="200">
+</span>
+  <span><p>{{i.movie_director}}</p></span>
+  <b></b>
+  <p><span>{{i.movie_actor}}</span></p>
+  <span>{{i.movie_release}}</span>
+  <b></b>
+  <span>{{i.movie_region}}</span>
+ <span>{{i.movie_score}}</span>
+</a>
+</div>
+{% endfor %}
+</div>
+{%endblock%}
+

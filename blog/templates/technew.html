@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+ 
+{% block title %}科技新闻{% endblock %}
+{%block nav_technew%} class="active"{%endblock%}
+{% block content %}
+<div class="row"  >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+
+{% for i in newslist %}
+<div class="row" style="margin-top:22px;">
+<div class="col-md-4 hidden-xs col-sm-4 col-lg-4"  >
+<a href="{{i.link}}" alt="{{i.title}}" target="_blank"><img src="{{i.img}}" alt="{{i.title}}" style="width:190px;height:120px;"/></div>
+<div class="col-md-8  col-xs-12  col-sm-8 col-lg-8"  >
+<h3><a href="{{i.link}}" target="_blank">{{i.title}}</a></h3><br> {{i.tag}} <span style="float:right;">{{i.time}}</span>
+</div>
+</div>
+{% endfor %}
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+</div>
+
+<div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'technew' ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'technew' npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> </button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+{% endblock %}

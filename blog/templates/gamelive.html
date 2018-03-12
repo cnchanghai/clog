@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}直播聚合-
+{%ifequal cata  'hot'%}热门直播{%endifequal%}
+{%ifequal cata  'wangzhe'%}王者荣耀{%endifequal%}
+{%ifequal cata  'hearthstone'%}炉石传说 {%endifequal%}
+{%ifequal cata  'lol'%}英雄联盟{%endifequal%}
+{%ifequal cata  'tvgame'%}主机游戏{%endifequal%}
+{%ifequal cata  'jdqs'%}绝地求生{%endifequal%}
+{%ifequal cata  'girl'%}全民星秀{%endifequal%}
+{% endblock %}{%block nav%}
+                                <li {%ifequal cata  'hot'%}class="active" {%endifequal%} ><a href="{%url 'live' cata='hot'%}"><span class="glyphicon glyphicon-fire"></span> 热门游戏</a></li>
+                                <li  {%ifequal cata  'wangzhe'%}class="active" {%endifequal%}><a href="{%url 'live' cata='wangzhe'%}"><span class="glyphicon glyphicon-cd"></span> 王者荣耀</a></li>
+                                <li  {%ifequal cata  'hearthstone'%}class="active" {%endifequal%}><a href="{%url 'live' cata='hearthstone'%}"><span class="glyphicon glyphicon-fire"></span>炉石传说</a></li>
+                                <li  {%ifequal cata  'lol'%}class="active" {%endifequal%}><a href="{%url 'live' cata='lol'%}"><span class="glyphicon glyphicon-question-sign"></span>英雄联盟</a></li>
+                                <li  {%ifequal cata  'tvgame'%}class="active" {%endifequal%}><a href="{%url 'live' cata='tvgame'%}"><span class="glyphicon glyphicon-cd"></span>主机游戏</a></li>
+                                <li  {%ifequal cata  'jdqs'%}class="active" {%endifequal%}><a href="{%url 'live' cata='jdqs'%}"><span class="glyphicon glyphicon-question-sign"></span>绝地求生</a></li>
+                                <li  {%ifequal cata  'girl'%}class="active" {%endifequal%}><a href="{%url 'live' cata='girl'%}"><span class="glyphicon glyphicon-question-sign"></span>全民星秀</a></li>
+{%endblock%}
+
+
+{% block content %}
+<div class="row">
+{% for i in result %}
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 game_div">
+<a target=_blank href="{{i.game_link}}" title="{{i.game_title}}"  >
+  <h6>{{i.game_title}}</h6>
+  <span class="imgbox">
+  <img src="{{i.game_picture}}" width="283" height="163">
+</span>
+  <span>{{i.game_name}}</span>
+  <b></b>
+  <span>{{i.platform}}</span>
+<p>
+ <span>{{i.game_nickname}}</span>
+    <span>{{i.game_count}}</span>
+     </p>
+</a>
+</div>
+{% endfor %}
+</div>
+
+
+
+
+
+{% endblock %}

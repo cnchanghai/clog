@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+ 
+{% block title %}主页{% endblock %}
+{% block nav_index%} class="active"{%endblock%} 
+{% block content %}
+<div class="row">
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'live' cata='hot'%}" title="直播聚合"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images//tvgame.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">直播聚合</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'moko' 1 %}" title="看美模"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/moko.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">看美模</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'technew' 1 %}" title="科技新闻"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/tech.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">科技新闻</h3>
+</a>
+</div>
+
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'xiaohua' 1 %}" title="开心一笑"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/qiubai.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">开心一笑</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'piyao' 'all' 1%}" title="粉碎谣言"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/piyao.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">粉碎谣言</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'zmt' 1 %}" title="搜狗字媒体"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/zimeiti.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">字媒体</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'shici' 'xiaoxue' 1%}" title="瑰丽诗词"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/girl.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">瑰丽诗词</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'nolishi' %}" title="历史上的今天"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/lsjt.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">历史上的今天</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'music' 'hot' %}" title="音乐榜单"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/music.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">音乐榜单</h3>
+</a>
+</div>
+<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 index_div">
+<a target=_blank href="{%url 'movie_nowplay' %}" title="影剧推荐"  >
+  <span class="imgbox">
+  <b></b>
+  <img src="/static/images/oscar.jpg" width="283" height="163">
+</span>
+  <h3 class="ellipsis">影剧推荐</h3>
+</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

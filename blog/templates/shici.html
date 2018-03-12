@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}瑰丽古诗词-
+{%ifequal cata  'xiaoxue'%}小学必背{%endifequal%}
+{%ifequal cata  'tangshi'%}唐诗{%endifequal%}
+{%ifequal cata  'songci'%}宋词{%endifequal%}
+{%ifequal cata  'yuanqu'%}元曲{%endifequal%}
+{% endblock %}
+{%block body%}<body>{%endblock%}
+
+{%block nav%}
+                                <li {%ifequal cata  'xiaoxue'%}class="active" {%endifequal%} ><a href="{%url 'shici' cata='xiaoxue' page=1%}"><span class="glyphicon glyphicon-fire"></span>小学必背</a></li>
+                                <li  {%ifequal cata  'tangshi'%}class="active" {%endifequal%}><a href="{%url 'shici' cata='tangshi' page=1%}"><span class="glyphicon glyphicon-cd"></span>唐诗</a></li>
+                                <li  {%ifequal cata  'songci'%}class="active" {%endifequal%}><a href="{%url 'shici' cata='songci' page=1%}"><span class="glyphicon glyphicon-fire"></span>宋词</a></li>
+                                <li  {%ifequal cata  'yuanqu'%}class="active" {%endifequal%}><a href="{%url 'shici' cata='yuanqu' page=1%}"><span class="glyphicon glyphicon-question-sign"></span>元曲</a></li>
+{%endblock%}
+
+{% block content %}
+<div class="row" style="margin-top:10px;" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+{% for i in mtlist %}
+    <div class="row" style="margin-top:4px;"><span style="float:right;">{{i.author}}</span><a href="{%url 'shicidetail' i.sid %}" target="_blank">{{ i.title }}</a></div>
+{% endfor %}
+
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+</div>
+    <div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'shici' cata=cata page=ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'shici' cata=cata page=npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> </button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+ 
+{% block title %}模特信息{% endblock %}
+{% block nav_moko%}class="active"{%endblock%}
+{% block content %}
+<div class="row">
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+<div class="col-md-8 col-xs-12 col-sm-12 col-lg-8">
+{% for i in mtlist %}
+   <div class="col-md-3 col-xs-6 col-sm-3 col-lg-3 photo" style="width:180px;hight=250px;">
+<a href="{%url 'mokodetail' i.uid %}" target="_self" > <span>姓名:{{i.uname}}<br>编号:{{i.uid}}</span>
+<img src="{{i.picurl}}" width="160px" height="240px" alt="{{i.uid}}"></a>
+</div>
+{% endfor %}
+</div>
+<div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+</div>
+
+
+<div class="row" >
+ <div class="col-md-2 col-xs-0 col-sm-0 col-lg-2"> </div>
+    <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2 ">
+{% if ppage %}
+   <a href="{%url 'moko' ppage %}"> <button class="btn  pull-left" >
+       <span class="glyphicon glyphicon-arrow-left">上一页</span> </button></a>
+{%else%} 
+        <button class="btn  pull-left" >这是第一页</button>
+{%endif %}
+        </div>
+    <div class="col-md-2 col-xs-2 col-sm-2 col-lg-4">  </div>
+       <div class="col-md-4 col-xs-5 col-sm-5 col-lg-2">
+{% if npage %}
+           <a href="{%url 'moko' npage %}" > <button class="btn  pull-right" >下一页<span class="glyphicon glyphicon-arrow-right " ></span> </button></a>
+{%else%}
+           <button class="btn  pull-right" >这是最后一页</button>
+{%endif%}
+           </div>
+     <div class="col-md-2 col-xs-0 col-sm-1 col-lg-2"> </div>
+    </div>
+<div class="row">
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+<div class="col-md-6 col-xs-11 col-sm-11 col-lg-6">资料来源于互联网，如有侵权请联系<a href="mailto:i#lichanghai.cn">i#lichanghai.cn</a>删除 </div>
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+</div>
+{% endblock %}
