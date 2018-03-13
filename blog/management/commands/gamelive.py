@@ -29,26 +29,25 @@ class Command(BaseCommand):
         #            print gname[j]+'  cc is error'
         #    j+=1
         #print 'ccover'
-        delete=gamelist.objects.filter(platform='cc').delete()
-        for ccname in ccnames:
-            if ccname!='': 
-                try:
-                    ccgame=cc163(ccname)
-                    for i in ccgame:
-                        insert=gamelist(platform='cc',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
-                        insert.save()
-                except Exception as e:
-                    print(gname[j]+'  cc is error')
-            j+=1
-        print('ccover')
+        #delete=gamelist.objects.filter(platform='cc').delete()
+        #for ccname in ccnames:
+        #    if ccname!='': 
+        #        try:
+        #            ccgame=cc163(ccname)
+        #            for i in ccgame:
+        #                insert=gamelist(platform='cc',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
+        #                insert.save()
+        #        except Exception as e:
+        #            print(gname[j]+'  cc is error')
+        #    j+=1
+        #print('ccover')
 
 
 
         j=0
         game_time=float(time.time())
         delete=gamelist.objects.filter(platform='douyu').delete()
-        for douyuname in douyunames:
-              
+        for douyuname in douyunames:              
             try:
                 douyugame=douyu(douyuname)
                 for i in douyugame:
@@ -86,17 +85,17 @@ class Command(BaseCommand):
             j+=1
         print('panda over')
         j=0
-        delete=gamelist.objects.filter(platform='quanmin').delete()
-        for quanminname in quanminnames:
-            try:
-                quanmingame=quanmin(quanminname)
-                for i in quanmingame:
-                    insert=gamelist(platform='quanmin',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
-                    insert.save()
-            except Exception as  e:
-                print(gname[j]+'  quanmin is error')  
-            j+=1
-        print('quanmin over')
+        #delete=gamelist.objects.filter(platform='quanmin').delete()
+        #for quanminname in quanminnames:
+        #    try:
+        #        quanmingame=quanmin(quanminname)
+        #        for i in quanmingame:
+        #            insert=gamelist(platform='quanmin',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
+        #            insert.save()
+        #    except Exception as  e:
+        #        print(gname[j]+'  quanmin is error')  
+        #    j+=1
+        #print('quanmin over')
 
         game_time=float(time.time())
         delete=gamelist.objects.filter(platform='zhanqi').delete()

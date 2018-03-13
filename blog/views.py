@@ -23,11 +23,12 @@ def wechat(request):
         timestamp = request.GET.get("timestamp", None)
         nonce = request.GET.get("nonce", None)
         echoStr = request.GET.get("echostr", None)
-        tmpList = [token, timestamp, nonce]
-        tmpList.sort()
-        tmpstr = "%s%s%s" % tuple(tmpList)
-        tmpstr = hashlib.sha1(tmpstr).hexdigest()
-        if tmpstr == signature:
+        #tmpList = [token, timestamp, nonce]
+        #tmpList.sort()
+        #tmpstr = "%s%s%s" % tuple(tmpList)
+        #tmpstr = hashlib.sha1(tmpstr).hexdigest()
+        #if tmpstr == signature:
+        if signature != None:
             return HR(request.GET.get('echostr', ''))
         else:
             return HR("<img src=\"/static/images/wechatqr.jpg\">")

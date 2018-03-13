@@ -255,6 +255,9 @@ if __name__=="__main__":
     pandaname='beauty'
     huyaname='2174'
     quanminname='overwatch'
-    res=huya('hearthstone')
-    for i in res:
-        print(i)
+    quanminnames=['hearthstone','lol','tvgame','beauty','wangzhe','juediqiusheng']
+    pandanames=['hearthstone','lol','zhuji','yzdr','kingglory','pubg']
+    for nname in quanminnames:
+        res=quanmin(nname)
+        for i in res:
+            print(i)
