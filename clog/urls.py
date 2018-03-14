@@ -18,6 +18,7 @@ from django.contrib import admin
 from blog import views as blog_v
 
 urlpatterns = (
+    url(r'^fulitu.php/picid=(?P<picid>\d+)$',blog_v.fulitu,name='fulitu'),
     url(r'^moko.php/detail=(?P<uid>.+)$',blog_v.mokodetail,name='mokodetail'),
     url(r'^moko.php/(?P<page>\d+)$',blog_v.moko,name='moko'),
     url(r'^zmt.php/(?P<page>\d+)$',blog_v.zimeiti,name='zmt'),

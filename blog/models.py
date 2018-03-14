@@ -128,6 +128,10 @@ class moviesuggest(models.Model):
     movie_pic=models.CharField(max_length=100)
     def __unicode__(self):
         return self.movie_name
+class fulipic(models.Model):
+    picurl=models.CharField(max_length=200)
+    def __unicode__(self):
+        return self.picurl
 
 admin.site.register(technews)
 admin.site.register(shicilist)

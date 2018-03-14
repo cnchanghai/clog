@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+ 
+{% block title %}模特信息{% endblock %}
+{%block nav_moko%}class="active"{%endblock%}
+{% block content %}
+<div class="row">
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+<div class="col-md-6 col-xs-11 col-sm-11 col-lg-6">
+<img src="{{ onepic.picurl}}" />
+ </div>
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+</div>
+
+<div class="row">
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+<div class="col-md-6 col-xs-11 col-sm-11 col-lg-6">资料来源于互联网，如有侵权请联系<a href="mailto:i#lichanghai.cn">i#lichanghai.cn</a>删除 </div>
+<div class="col-md-3 col-xs-1 col-sm-1 col-lg-3"> </div>
+</div>
+{% endblock %}

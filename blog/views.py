@@ -12,7 +12,6 @@ from django.shortcuts import render_to_response
 from django.urls import reverse
 from django.http import HttpResponse as HR
 from blog.models import *
-from blog.func import *
 
 # Create your views here.
 @csrf_exempt
@@ -53,11 +52,19 @@ def wechat(request):
                 dic['Title']=u'美模图'
                 dic['Description']=u'18岁以下，请在父母陪同下观看'
                 dic['PicUrl']=mtpic.picurl
+                #dic['Content']=u'18岁以下，请在父母陪同下观看'
                 dic['Url']='http://www.xbolo.win'+reverse('mokodetail',kwargs={'uid':mtpic.uid})
                 return render_to_response('reply_link.html', dic)
+                #return render_to_response('reply_message.html',dic)
             elif dic['Content']==u'福利':
-                dcc=fuli(dic)
-                return render_to_response('reply_link.html', dcc)
+                maxrecord=fulipic.objects.count()-1
+                ranint=randint(0, maxrecord)
+                mtpic=fulipic.objects.get(id=ranint)
+                dic['Title']=u'福利图'
+                dic['Description']=u'18岁以下，请在父母陪同下观看'
+                dic['PicUrl']=mtpic.picurl
+                dic['Url']='http://www.xbolo.win'+reverse('fulitu',kwargs={'picid':mtpic.id})
+                return render_to_response('reply_link.html', dic)
             elif dic['Content'].lower()=='today' or dic['Content']==u'今天':
                 txt=''
                 m=str(time.strftime('%m'))
@@ -126,6 +133,9 @@ def mokodetail(request,uid):
     mtinfo=mtbziliao.objects.get(uid=uid)
     mtpic=mtbpic.objects.filter(uid=uid)
     return render(request,'mokodetail.html',{'mtinfo':mtinfo,'mtpic':mtpic,})
+def fulitu(request,picid):
+    onepic=fulipic.objects.get(id=picid)
+    return render(request,'fulitu.html',{'onepic':onepic,})
 def moko(request,page):
     xianshi=12
     page=int(page)
