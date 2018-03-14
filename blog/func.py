@@ -9,7 +9,9 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def fuli(dic):
     page=dic
-    pages='http://jandan.net/ooxx/page-'+str(page)+'#comments'
+    pages='http://jandan.net/ooxx/'
+    if dic!=0:
+        pages='http://jandan.net/ooxx/page-'+str(page)+'#comments'
     #r = requests.get(pages, verify=False)
     driver = selenium.webdriver.PhantomJS()
     driver.get(pages)
