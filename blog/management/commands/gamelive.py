@@ -71,20 +71,20 @@ class Command(BaseCommand):
                 print(gname[j]+' huya is error')
             j+=1  
         print('huya over')
-        game_time=float(time.time())
-        delete=gamelist.objects.filter(platform='panda').delete()
-        j=0
-        for pandaname in pandanames:
-            try:
-                pandagame=panda(pandaname)
-                for i in pandagame:
-                    insert=gamelist(platform='panda',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
-                    insert.save()
-            except Exception as  e:
-                print(gname[j]+' panda is error')  
-            j+=1
-        print('panda over')
-        j=0
+        #game_time=float(time.time())
+        #delete=gamelist.objects.filter(platform='panda').delete()
+        #j=0
+        #for pandaname in pandanames:
+        #    try:
+        #        pandagame=panda(pandaname)
+        #        for i in pandagame:
+        #            insert=gamelist(platform='panda',game_name=gname[j],game_link=i['game_link'],game_title=i['game_title'],game_picture=i['game_picture'],game_nickname=i['game_nickname'],game_count=float(i['game_count']),game_time=game_time)
+        #            insert.save()
+        #    except Exception as  e:
+        #        print(gname[j]+' panda is error')  
+        #    j+=1
+        #print('panda over')
+        #j=0
         #delete=gamelist.objects.filter(platform='quanmin').delete()
         #for quanminname in quanminnames:
         #    try:
