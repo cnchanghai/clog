@@ -18,17 +18,20 @@ from blog.models import *
 def wechat(request):
     if request.method == "GET":
         token = 'cnchanghai'  # 填入你的 Token
-        signature = request.GET.get("signature", None)
-        timestamp = request.GET.get("timestamp", None)
-        nonce = request.GET.get("nonce", None)
-        echoStr = request.GET.get("echostr", None)
-        #tmpList = [token, timestamp, nonce]
-        #tmpList.sort()
-        #tmpstr = "%s%s%s" % tuple(tmpList)
-        #tmpstr = hashlib.sha1(tmpstr).hexdigest()
-        #if tmpstr == signature:
-        if signature != None:
+        signature = request.GET.get("signature", '')
+        timestamp = request.GET.get("timestamp", '')
+        nonce = request.GET.get("nonce", '')
+        echoStr = request.GET.get("echostr", '')
+        tmpList = [token,timestamp, nonce]
+        tmpList.sort()
+        tmpstr = "%s%s%s" % tuple(tmpList)
+        tmpstr = hashlib.sha1(tmpstr.encode("utf-8")).hexdigest()
+        if tmpstr == signature:
+        #if signature != None:
             return HR(request.GET.get('echostr', ''))
+            #return HR(echostr)
+            #response = request.GET.get('echostr', 'error')
+            #return HR(response, content_type="application/xml")
         else:
             return HR("<img src=\"/static/images/wechatqr.jpg\">")
     else:
