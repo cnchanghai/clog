@@ -9,7 +9,7 @@ from blog.models import technews
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        link='http://tech.163.com'
+        link='http://www.cnbeta.com/category/tech.htm'
         newslist=new163(link)
         for i in newslist:
             try:

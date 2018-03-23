@@ -10,29 +10,26 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 def new163(link):
     news=[]
-    driver = selenium.webdriver.PhantomJS()
-    driver.implicitly_wait(10)
-    driver.set_page_load_timeout(20)
-    driver.get(link)
-    content=driver.page_source
-    #print content
+    req= requests.get(link,verify=False)
+    content= req.content
     soup=BeautifulSoup(content,'lxml')
-    #print soup
-    items=soup.find_all('div',attrs={'class',"data_row news_article clearfix"})
+    items=soup.find_all('div',attrs={'item'})
     for i in items:
         dic={}
-        dic['title']=i.find('h3').text
-        dic['link']=i.find('a')['href']
-        dic['tag']=i.find('strong').text
-        dic['img']=i.find('img')['src'].split('?')[0]
-        t=i.find('span',attrs={'class':'time'}).text
-        if u'小时' in t:t=datetime.now()-timedelta(hours=int(t.strip(u'小时前')))
-        elif u'天' in t:t=datetime.now()-timedelta(days=int(t.strip(u'天前')))
-        elif u'分钟' in t:t=datetime.now()-timedelta(minutes=int(t.strip(u'分钟前'.strip('-'))))
-        dic['time']=t
-        news.append(dic)
+        try:
+            dic['title']=i.find('a').text
+            dic['link']=i.find('a')['href']
+            dic['tag']=i.find('label').text
+            dic['img']=i.find('img')['src']
+            t=i.find('li').text
+            t=t.split('|')[0].split('于')[1].strip()
+            t=time.strptime(t,"%Y-%m-%d %H:%M")
+            dic['time']=t
+            print(t)
+            news.append(dic)
+        except:
+            continue
     return news
-
 def qiushi(m):
     e='';
     qiushi_list=[]
