@@ -56,7 +56,7 @@ def wechat(request):
                 dic['Description']=u'18岁以下，请在父母陪同下观看'
                 dic['PicUrl']=mtpic.picurl
                 #dic['Content']=u'18岁以下，请在父母陪同下观看'
-                dic['Url']='http://www.xbolo.win'+reverse('mokodetail',kwargs={'uid':mtpic.uid})
+                dic['Url']='http://47.100.117.13'+reverse('mokodetail',kwargs={'uid':mtpic.uid})
                 return render_to_response('reply_link.html', dic)
                 #return render_to_response('reply_message.html',dic)
             elif dic['Content']==u'福利':
@@ -66,7 +66,7 @@ def wechat(request):
                 dic['Title']=u'福利图'
                 dic['Description']=u'18岁以下，请在父母陪同下观看'
                 dic['PicUrl']=mtpic.picurl
-                dic['Url']='http://www.xbolo.win'+reverse('fulitu',kwargs={'picid':mtpic.id})
+                dic['Url']='http://47.100.117.13'+reverse('fulitu',kwargs={'picid':mtpic.id})
                 return render_to_response('reply_link.html', dic)
             elif dic['Content'].lower()=='today' or dic['Content']==u'今天':
                 txt=''

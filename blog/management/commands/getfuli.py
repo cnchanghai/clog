@@ -9,13 +9,13 @@ from blog.models import fulipic
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        #for m in range(1,30):
-        #    print('============= page  '+str(m)+'   ============')
-        qiubailist=fuli(0)
-        for i in qiubailist:
-            try:
-                a=fulipic.objects.get_or_create(picurl=i)
-            except:
-                tmp = os.popen('systemctl start mariadb').readlines()
+        for m in range(30,49):
+            print('============= page  '+str(m)+'   ============')
+            qiubailist=fuli(m)
+            for i in qiubailist:
+                try:
+                    a=fulipic.objects.get_or_create(picurl=i)
+                except:
+                    tmp = os.popen('systemctl start mariadb').readlines()
         print('over')
 
