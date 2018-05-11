@@ -8,9 +8,18 @@ import re
 from datetime import datetime,timedelta
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
+    'Accept-Encoding': 'gzip, deflate',
+    'Connection': 'keep-alive',
+    'Cache-Control': 'max-age=0',
+}
+
 def new163(link):
     news=[]
-    req= requests.get(link,verify=False)
+    req= requests.get(link,verify=False,headers=headers)
     content= req.content
     soup=BeautifulSoup(content,'lxml')
     items=soup.find_all('div',attrs={'item'})
@@ -23,9 +32,9 @@ def new163(link):
             dic['img']=i.find('img')['src']
             t=i.find('li').text
             t=t.split('|')[0].split('于')[1].strip()
-            t=time.strptime(t,"%Y-%m-%d %H:%M")
+            #t=time.strptime(t,"%Y-%m-%d %H:%M")
             dic['time']=t
-            print(t)
+            #print(t)
             news.append(dic)
         except:
             continue
@@ -77,10 +86,13 @@ def lssdjt(m,d):
     url='http://www.todayonhistory.com/'+str(m)+'/'+str(d)+'/'
     print(url)
     lslist=[]
-    r = requests.get(url, verify=False)
+    r = requests.get(url,headers=headers)
     content = r.content
     soup = BeautifulSoup(content, 'lxml')
-    linklist = soup.find_all('li', 'circlel')
+    #print(soup)
+    linklist = soup.find_all(name='li', attrs={"class":re.compile(r'^circ')})
+    #print (linklist)
+    #print(linklist[2])
     for link in linklist:
         if link == linklist[0]:
             continue
@@ -92,14 +104,15 @@ def lssdjt(m,d):
                 dic['title']= link.find('a').get('title')
                 #print dic['title']
                 lislink = link.find('a').get('href')
+                #dic['link']=lislink
                 dic['content']=getcontent(lislink)
-                #dic['m']=m
-                #dic['d']=d
                 if dic['content']=='':continue
+                lslist.append(dic)
             except:
+                #print(link.find('span', 'poh').text)
                 continue
-        lslist.append(dic)
     return lslist
+
 def zimeiti(page):
     meiti_list=[]
     url = 'http://pinyin.sogou.com/zimeiti/index/'+str(page)

@@ -12,11 +12,20 @@ class Command(BaseCommand):
         a=[31,29,31,30,31,30,31,31,30,31,30,31]
         m=1
         for j in a:   
-            for d in range(j):
-                lslist=lssdjt(m,d+1)
+            for d in range(1,j+1):
+                lslist=lssdjt(m,d)
                 for i in lslist:
                     text=i['content'].encode('utf8')
-                    a=lsjt.objects.get_or_create(month=m,title=i['title'],day=d+1,year=i['year'],content=i['content'])
-                print(m,'/',d+1,'over')
+                    a=lsjt.objects.get_or_create(month=m,title=i['title'],day=d,year=i['year'],content=i['content'])
+                print(m,'/',d,'over')
             m=m+1
+            print(m,'/',d,'over')
+        #a=time.strftime('%m-%d',time.localtime(time.time())).split('-')
+        #d=str(int(a[1]))
+        #m=str(int(a[0]))
+        #lslist=lssdjt(m,d)
+        #for i in lslist:
+        #     text=i['content'].encode('utf8')
+        #     a=lsjt.objects.get_or_create(month=m,title=i['title'],day=d,year=i['year'],content=i['content'])
+        #print(m,'/',d,'over')
 

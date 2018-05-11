@@ -2,6 +2,7 @@
 from blog.tuling import *
 import hashlib
 import time
+import smtplib
 from lxml import etree
 from blog.parse import *
 from random import randint
@@ -12,6 +13,7 @@ from django.shortcuts import render_to_response
 from django.urls import reverse
 from django.http import HttpResponse as HR
 from blog.models import *
+from django.core.mail import send_mail
 
 # Create your views here.
 @csrf_exempt
@@ -74,7 +76,7 @@ def wechat(request):
                 if '0'==m[0]:m=m.strip('0')
                 d=str(time.strftime('%d'))
                 if '0'==d[0]:d=d.strip('0')
-                daylist=lsjt.objects.filter(month=m,day=d).values('year','title')
+                daylist=lsjt.objects.filter(month=m,day=d)[0:9].values('year','title')
                 for i in daylist:
                     txt=txt+i['year']+u'年--'+i['title']+'\n'
                 dic['Content']=txt
@@ -288,4 +290,31 @@ def piyao(request,cata,page):
     else:
         mtlist=yaoyan.objects.filter(cata=cata).order_by('-date')[xianshi*(page-1):en_record]
     return render(request,'piyao.html',{'mtlist':mtlist,'npage':npage,'ppage':ppage,'cata':cata,})
-
+def aliyunlive(request):
+    stime=request.GET.get("time", '')
+    args=request.GET.get("usrargs",'')
+    action=request.GET.get("action",'')
+    app=request.GET.get("app",'')
+    appname=request.GET.get("appname",'')
+    stream=request.GET.get("id",'')
+    node=request.GET.get("node",'')
+    ip=request.GET.get("ip",'')
+    if stime=='':
+        pass
+    else:
+        dt=time.localtime(int(stime))
+        stime =time.strftime('%Y-%m-%d %H:%M:%S', dt)
+    opstitle=''
+    ops=''
+    if action=='publish':
+        ops='推流'
+        opstitle="Aliyun直播 推流提醒"
+    else:
+        opstitle="Aliyun直播 断流提醒"
+        ops="断流"
+    mailto_list=['lichanghai@seertv.com','cnchanghai@qq.com']
+    mail_content=opstitle+'\n 操作： '+ops+'\n 时间： '+stime+'\n appname： '+appname+'\n 流名称： '+stream+'\n 节点： '+node+'\n 相关ip地址
+： '+ip+'\n 相关参数： '+args
+    send_mail(opstitle,mail_content,'cnchanghai@163.com',mailto_list,fail_silently=False)
+    string = u"ok"
+    return render(request, 'aliyun.html', {'string': string})
