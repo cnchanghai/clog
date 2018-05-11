@@ -40,6 +40,6 @@ urlpatterns = (
     url(r'^movie/laterplay.php$',blog_v.movie_laterplay,name='movie_laterplay'),
     url(r'^movie/suggest.php$',blog_v.movie_suggest,name='movie_suggest'),
     url(r'^movie/tvshow.php$',blog_v.movie_tvshow,name='movie_tvshow'),
-    url(r'^aliyun/live.php$',blog_v.aliyunlive,name='aliyunlive'),
+    url(r'^aliyun/live.php',blog_v.aliyunlive,name='aliyunlive'),
 
 )

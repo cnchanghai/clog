@@ -313,8 +313,7 @@ def aliyunlive(request):
         opstitle="Aliyun直播 断流提醒"
         ops="断流"
     mailto_list=['lichanghai@seertv.com','cnchanghai@qq.com']
-    mail_content=opstitle+'\n 操作： '+ops+'\n 时间： '+stime+'\n appname： '+appname+'\n 流名称： '+stream+'\n 节点： '+node+'\n 相关ip地址
-： '+ip+'\n 相关参数： '+args
+    mail_content=opstitle+'\n 操作： '+ops+'\n 时间： '+stime+'\n appname： '+appname+'\n 流名称： '+stream+'\n 节点： '+node+'\n 相关ip地址： '+ip+'\n 相关参数： '+args
     send_mail(opstitle,mail_content,'cnchanghai@163.com',mailto_list,fail_silently=False)
     string = u"ok"
     return render(request, 'aliyun.html', {'string': string})
