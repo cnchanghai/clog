@@ -84,15 +84,15 @@ def wechat(request):
             elif  'help'== dic['Content'].lower() or u'帮助'==dic['Content'] or u'?' in dic['Content']:
                 dic['Content']='感谢您的关注！\n输入“帮助”或“help”查看相应命令单\n输入“模特”或“model”查看模特图片\n输入“福利” 可以看福利照片\n输入”快递查询“可以查询快递\n输入“time” 查看当前时间\n输入“joke”或者“笑话”查看笑话\n输入“today”或“今天”可以查看历史上的今天\n其他条目由图灵机器人为您服务\n网站：www.xbolo.win  和 www.lichanghai.cn 期待您的光临'
                 return render_to_response('reply_message.html',dic)
-            else:
-                data=Tlrobot(dic)#图灵机器人
-                return render_to_response(data['muban'],data['dat'])
-        elif messagetype=='image':
-            dic=parse_image(xml)
-            return render_to_response('reply_image.html',dic)
-        elif messagetype=='voice':
-            dic=parse_voice(xml)
-            return render_to_response('reply_voice.html',dic)
+        #    else:
+        #        data=Tlrobot(dic)#图灵机器人
+        #        return render_to_response(data['muban'],data['dat'])
+        #elif messagetype=='image':
+        #    dic=parse_image(xml)
+        #    return render_to_response('reply_image.html',dic)
+        #elif messagetype=='voice':
+        #    dic=parse_voice(xml)
+        #    return render_to_response('reply_voice.html',dic)
 
 
 def xiaohua(request,page):
@@ -290,30 +290,3 @@ def piyao(request,cata,page):
     else:
         mtlist=yaoyan.objects.filter(cata=cata).order_by('-date')[xianshi*(page-1):en_record]
     return render(request,'piyao.html',{'mtlist':mtlist,'npage':npage,'ppage':ppage,'cata':cata,})
-def aliyunlive(request):
-    stime=request.GET.get("time", '')
-    args=request.GET.get("usrargs",'')
-    action=request.GET.get("action",'')
-    app=request.GET.get("app",'')
-    appname=request.GET.get("appname",'')
-    stream=request.GET.get("id",'')
-    node=request.GET.get("node",'')
-    ip=request.GET.get("ip",'')
-    if stime=='':
-        pass
-    else:
-        dt=time.localtime(int(stime))
-        stime =time.strftime('%Y-%m-%d %H:%M:%S', dt)
-    opstitle=''
-    ops=''
-    if action=='publish':
-        ops='推流'
-        opstitle="Aliyun直播 推流提醒"
-    else:
-        opstitle="Aliyun直播 断流提醒"
-        ops="断流"
-    mailto_list=['lichanghai@seertv.com','cnchanghai@qq.com']
-    mail_content=opstitle+'\n 操作： '+ops+'\n 时间： '+stime+'\n appname： '+appname+'\n 流名称： '+stream+'\n 节点： '+node+'\n 相关ip地址： '+ip+'\n 相关参数： '+args
-    send_mail(opstitle,mail_content,'cnchanghai@163.com',mailto_list,fail_silently=False)
-    string = u"ok"
-    return render(request, 'aliyun.html', {'string': string})
