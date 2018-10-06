@@ -1,5 +1,4 @@
 # coding:utf-8
-from blog.tuling import *
 import hashlib
 import time
 import smtplib
@@ -13,8 +12,6 @@ from django.shortcuts import render_to_response
 from django.urls import reverse
 from django.http import HttpResponse as HR
 from blog.models import *
-from django.core.mail import send_mail
-
 # Create your views here.
 @csrf_exempt
 def wechat(request):
@@ -84,17 +81,9 @@ def wechat(request):
             elif  'help'== dic['Content'].lower() or u'帮助'==dic['Content'] or u'?' in dic['Content']:
                 dic['Content']='感谢您的关注！\n输入“帮助”或“help”查看相应命令单\n输入“模特”或“model”查看模特图片\n输入“福利” 可以看福利照片\n输入”快递查询“可以查询快递\n输入“time” 查看当前时间\n输入“joke”或者“笑话”查看笑话\n输入“today”或“今天”可以查看历史上的今天\n其他条目由图灵机器人为您服务\n网站：www.xbolo.win  和 www.lichanghai.cn 期待您的光临'
                 return render_to_response('reply_message.html',dic)
-        #    else:
-        #        data=Tlrobot(dic)#图灵机器人
-        #        return render_to_response(data['muban'],data['dat'])
-        #elif messagetype=='image':
-        #    dic=parse_image(xml)
-        #    return render_to_response('reply_image.html',dic)
-        #elif messagetype=='voice':
-        #    dic=parse_voice(xml)
-        #    return render_to_response('reply_voice.html',dic)
-
-
+            else: pass
+        else:
+            pass
 def xiaohua(request,page):
     page=int(page)
     xianshi=25
