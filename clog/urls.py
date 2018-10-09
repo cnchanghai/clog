@@ -26,8 +26,6 @@ urlpatterns = (
     url(r'^technew.php/(?P<page>\d+)$',blog_v.technew,name='technew'),
     url(r'^piyao.php/(?P<cata>.+)/(?P<page>\d+)$',blog_v.piyao,name='piyao'),
     url(r'^music.php/(?P<cata>.+)$',blog_v.music,name='music'),
-    url(r'^shici.php/(?P<cata>.+)/(?P<page>\d+)$',blog_v.shici,name='shici'),
-    url(r'^shici.php/(?P<sid>\d+)$',blog_v.shicidetail,name='shicidetail'),
     url(r'^lishi$',blog_v.nolishi,name='nolishi'),
     url(r'^lishi.php/(?P<m>\d+)/(?P<d>\d+)$',blog_v.lishi,name='lishi'),
     url(r'^lishi.php/detail=(?P<id>\d+)$',blog_v.lishidetail,name='lishidetail'),

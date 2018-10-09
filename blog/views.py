@@ -184,32 +184,6 @@ def gamelive(request,cata):
 def music(resquest,cata):
     mlist=musiclist.objects.filter(cata=cata)
     return render_to_response('music.html',{'mlist':mlist,'cata':cata})
-def shici(request,cata,page):
-    xianshi=30
-    page=int(page)
-    max_record=0
-    max_record=shicilist.objects.filter(cata=cata).count()
-    max_page=max_record/xianshi
-    if max_record%xianshi>0:
-        max_page+=1
-    if page>max_page or page<1:
-        return redirect(reverse('shici',kwargs={"cata":cata,"page":1}))
-    npage=page+1
-    ppage=page-1
-    en_record=page*xianshi
-    if en_record>=max_record:
-        en_record=max_record
-        npage=0
-    if npage>max_page:
-        npage=0
-    mtlist=shicilist.objects.filter(cata=cata).values('title','author','sid')[xianshi*(page-1):en_record]
-    return render(request,'shici.html',{'mtlist':mtlist,'npage':npage,'ppage':ppage,'cata':cata,})
-def shicidetail(request,sid):
-    txt=shicilist.objects.get(sid=sid)
-    cata=txt.cata
-    return render(request,'shicidetail.html',{'txt':txt,'cata':cata})
-
-
 
 def movie_nowplay(request):
     result=movielist.objects.filter(movie_type='nowplaying')
