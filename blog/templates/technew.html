@@ -10,11 +10,7 @@
 
 {% for i in newslist %}
 <div class="row" style="margin-top:22px;">
-<div class="col-md-4 hidden-xs col-sm-4 col-lg-4"  >
-<a href="{{i.link}}" alt="{{i.title}}" target="_blank"><img src="{{i.img}}" alt="{{i.title}}" style="width:190px;height:120px;"/></div>
-<div class="col-md-8  col-xs-12  col-sm-8 col-lg-8"  >
 <h3><a href="{{i.link}}" target="_blank">{{i.title}}</a></h3><br> {{i.tag}} <span style="float:right;">{{i.time}}</span>
-</div>
 </div>
 {% endfor %}
 </div>
