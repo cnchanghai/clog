@@ -19,14 +19,6 @@ class musiclist(models.Model):
     url=models.CharField(max_length = 250)
     def __unicode__(self):
         return self.title
-class shicilist(models.Model):
-    sid= models.AutoField(primary_key=True)
-    title=models.CharField(max_length=50)
-    cata=models.CharField(max_length=20)
-    author=models.CharField(max_length=20)
-    content=models.TextField()
-    def __unicode__(self):
-        return self.title
 class yaoyan(models.Model):
     title=models.CharField(max_length =150,unique=True)
     date=models.DateTimeField()
@@ -134,7 +126,6 @@ class fulipic(models.Model):
         return self.picurl
 
 admin.site.register(technews)
-admin.site.register(shicilist)
 admin.site.register(yaoyan)
 admin.site.register(zmt)
 admin.site.register(movielist)
